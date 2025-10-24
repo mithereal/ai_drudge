@@ -14,6 +14,18 @@ defmodule AiDrudgeWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :kaffy_browser do
+    plug :accepts, ["html", "json"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
+  use Kaffy.Routes,
+    scope: "/admin",
+    pipe_through: [:browser, :kaffy_browser]
+
   scope "/", AiDrudgeWeb do
     pipe_through :browser
 

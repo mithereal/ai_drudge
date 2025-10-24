@@ -69,6 +69,7 @@ defmodule AiDrudge.MixProject do
       {:fast_rss, "~> 0.5.0"},
       {:agent_obs, "~> 0.1.0"},
       {:req_llm, "~> 1.0.0-rc.7"},
+      {:kaffy, ">= 0.0.0"}
     ]
   end
 

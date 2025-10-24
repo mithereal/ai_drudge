@@ -68,20 +68,21 @@ if config_env() == :prod do
     secret_key_base: secret_key_base
 
   config :req_llm,
-         default_model:
-           System.get_env(
-             "DEFAULT_LLM",
-             "google:gemini-2.5-flash-lite-preview-09-2025"
-           )
+    default_model:
+      System.get_env(
+        "DEFAULT_LLM",
+        "google:gemini-2.5-flash-lite-preview-09-2025"
+      )
 
   config :opentelemetry,
-         span_processor: :batch,
-         resource: [service: [name: "my_llm_agent"]]
+    span_processor: :batch,
+    resource: [service: [name: "my_llm_agent"]]
 
   config :opentelemetry_exporter,
-         otlp_protocol: :http_protobuf,
-         otlp_endpoint: System.get_env("ARIZE_PHOENIX_OTLP_ENDPOINT", "http://localhost:6006"),
-         otlp_headers: []
+    otlp_protocol: :http_protobuf,
+    otlp_endpoint: System.get_env("ARIZE_PHOENIX_OTLP_ENDPOINT", "http://localhost:6006"),
+    otlp_headers: []
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key

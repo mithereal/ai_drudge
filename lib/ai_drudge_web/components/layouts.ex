@@ -140,4 +140,34 @@ defmodule AiDrudgeWeb.Layouts do
     </div>
     """
   end
+
+  @doc """
+  Shows the feed article and content.
+
+  ## Examples
+
+      <.article article={@article} />
+  """
+  attr :article, :map, doc: "the contents of the article"
+
+  def article(assigns) do
+    ~H"""
+    <div class="flex flex-row">
+      <div>{@article.republican}</div>
+      <div class="grow">
+        <.link navigate={@article.host}>{@article.title}</.link>
+        <div>{@article.description}</div>
+      </div>
+      <div>{@article.democrat}</div>
+    </div>
+    <div class="flex flex-row">
+      <div>
+        Data Points: {to_string(@article.data_points)}
+      </div>
+      <div>
+        Support Leaning: {@article.support}
+      </div>
+    </div>
+    """
+  end
 end

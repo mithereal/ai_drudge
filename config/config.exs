@@ -61,11 +61,11 @@ config :logger, :default_formatter,
 config :phoenix, :json_library, Jason
 
 config :agent_obs,
-       enabled: true,
-       handlers: [AgentObs.Handlers.Phoenix]
+  enabled: true,
+  handlers: [AgentObs.Handlers.Phoenix]
 
 config :req_llm,
-       default_model: "anthropic:claude-3-5-sonnet"
+  default_model: "anthropic:claude-3-5-sonnet"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -25,8 +25,8 @@ defmodule AiDrudge do
   end
 
   def run(url) do
-    {_title,feed} = fetch_feed(url)
-    [h|_parsed] = parse_data(feed)
+    {_title, feed} = fetch_feed(url)
+    [h | _parsed] = parse_data(feed)
 
     AiDrudge.Agent.run(h.description)
   end
