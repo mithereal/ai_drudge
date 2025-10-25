@@ -152,15 +152,15 @@ defmodule AiDrudgeWeb.Layouts do
 
   def article(assigns) do
     ~H"""
-    <div class="flex flex-row">
+    <div class="flex flex-row bg-slate-300">
       <div>{@article.republican}</div>
-      <div class="grow">
+      <div class="grow items-center justify-center text-center  bg-slate-200">
         <.link navigate={@article.host}>{@article.title}</.link>
         <div>{@article.description}</div>
       </div>
       <div>{@article.democrat}</div>
     </div>
-    <div class="flex flex-row">
+    <div class="flex flex-row justify-around bg-slate-200">
       <div>
         Data Points: {to_string(@article.data_points)}
       </div>

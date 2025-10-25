@@ -48,7 +48,7 @@ defmodule AiDrudge.Kaffy.Feed do
       "active" => active
     }
 
-    Feeds.create(attrs)
+    Feeds.create_feed(attrs)
   end
 
   def delete(conn, _changeset) do
@@ -71,7 +71,7 @@ defmodule AiDrudge.Kaffy.Feed do
       "active" => active
     }
 
-    entry = Feeds.Feed.changeset(changeset, attrs) |> Feeds.Repo.update()
+    entry = Feeds.Feed.changeset(changeset, attrs) |> AiDrudge.Repo.update()
     {:ok, entry}
   end
 end

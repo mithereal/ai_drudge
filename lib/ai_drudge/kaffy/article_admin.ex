@@ -5,7 +5,7 @@ defmodule AiDrudge.Kaffy.Article do
 
   import Phoenix.Component
 
-  alias AiDrudge.Feeds
+  alias AiDrudge.Articles
 
   def widgets(_schema, _conn) do
     [
@@ -48,12 +48,12 @@ defmodule AiDrudge.Kaffy.Article do
 
   def insert(conn, _changeset) do
     host = conn.params["article"]["host"]
-    name = conn.params["feed"]["name"]
-    title = conn.params["feed"]["title"]
-    description = conn.params["feed"]["description"]
-    republican = conn.params["feed"]["republican"]
-    democrat = conn.params["feed"]["democrat"]
-    support = conn.params["feed"]["support"]
+    name = conn.params["article"]["name"]
+    title = conn.params["article"]["title"]
+    description = conn.params["article"]["description"]
+    republican = conn.params["article"]["republican"]
+    democrat = conn.params["article"]["democrat"]
+    support = conn.params["article"]["support"]
 
     attrs = %{
       "host" => host,
@@ -65,7 +65,7 @@ defmodule AiDrudge.Kaffy.Article do
       "support" => support
     }
 
-    Articles.create(attrs)
+    Articles.create_article(attrs)
   end
 
   def delete(conn, _changeset) do
@@ -81,12 +81,12 @@ defmodule AiDrudge.Kaffy.Article do
 
   def update(conn, changeset) do
     host = conn.params["article"]["host"]
-    name = conn.params["feed"]["name"]
-    title = conn.params["feed"]["title"]
-    description = conn.params["feed"]["description"]
-    republican = conn.params["feed"]["republican"]
-    democrat = conn.params["feed"]["democrat"]
-    support = conn.params["feed"]["support"]
+    name = conn.params["article"]["name"]
+    title = conn.params["article"]["title"]
+    description = conn.params["article"]["description"]
+    republican = conn.params["article"]["republican"]
+    democrat = conn.params["article"]["democrat"]
+    support = conn.params["article"]["support"]
 
     attrs = %{
       "host" => host,
@@ -98,7 +98,20 @@ defmodule AiDrudge.Kaffy.Article do
       "support" => support
     }
 
-    entry = Articles.Article.changeset(changeset, attrs) |> Feeds.Repo.update()
+    entry = Articles.Article.changeset(changeset, attrs) |> AiDrudge.Repo.update()
     {:ok, entry}
+  end
+
+  def custom_pages(_schema, _conn) do
+    [
+      %{
+        slug: "ai-chat",
+        name: "Ask Ai",
+        view: AiDrudgeWeb.PageHTML,
+        template: "ai_chat.html",
+        assigns: [],
+        order: 2
+      }
+    ]
   end
 end

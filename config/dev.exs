@@ -8,7 +8,8 @@ config :ai_drudge, AiDrudge.Repo,
   database: "ai_drudge_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+  pool_size: 10,
+  port: 55432
 
 # For development, we disable any cache and enable
 # debugging and code reloading.

@@ -67,6 +67,18 @@ config :agent_obs,
 config :req_llm,
   default_model: "anthropic:claude-3-5-sonnet"
 
+config :kaffy,
+       otp_app: :ai_drudge,
+       ecto_repo: AiDrudge.Repo,
+       router: AiDrudgeWeb.Router,
+       admin_title: "AI Drudge Admin",
+       admin_logo: "/svg/logo.svg",
+       admin_logo_mini: "/svg/logo.svg",
+       admin_footer: "AI Drudge 2025",
+       resources: &AiDrudge.Kaffy.Config.create_resources/1,
+       scheduled_tasks: [
+       ]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"

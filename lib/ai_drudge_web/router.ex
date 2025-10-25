@@ -24,12 +24,17 @@ defmodule AiDrudgeWeb.Router do
 
   use Kaffy.Routes,
     scope: "/admin",
-    pipe_through: [:browser, :kaffy_browser]
+    pipe_through: [:kaffy_browser]
 
   scope "/", AiDrudgeWeb do
     pipe_through :browser
 
     get "/", PageController, :home
+  end
+
+  scope "/", AiDrudgeWeb do
+
+    post "/search", PageController, :search
   end
 
   # Other scopes may use custom stacks.

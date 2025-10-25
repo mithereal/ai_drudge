@@ -1,19 +1,7 @@
-defmodule AiDrudgeWeb.PageHTML do
-  @moduledoc """
-  This module contains pages rendered by PageController.
-
-  See the `page_html` directory for all templates available.
-  """
-  use AiDrudgeWeb, :html
-
-  embed_templates "page_html/*"
-
-  def ai_chat(_params)do
-   '<div class="w-screen flex items-center">
-<div class="pt-5 pb-5">Enter a Statement and chatgpt will analise it and give a breakdown for the frontpage.</div>
-    <form action="/search" class="max-w-[480px] w-full px-8" method="post">
+<div class="bg-gray-400 dark:bg-gray-800 h-screen w-screen flex justify-center items-center">
+    <form action="/search" class="max-w-[480px] w-full px-4">
         <div class="relative">
-            <input type="text" name="query" class="w-full border h-12 shadow p-4 rounded-full dark:text-gray-800 dark:border-gray-700 dark:bg-gray-200" placeholder="Ask">
+            <input type="text" name="q" class="w-full border h-12 shadow p-4 rounded-full dark:text-gray-800 dark:border-gray-700 dark:bg-gray-200" placeholder="search">
             <button type="submit">
                 <svg class="text-teal-400 h-5 w-5 absolute top-3.5 right-3 fill-current dark:text-teal-300"
                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -26,7 +14,4 @@ defmodule AiDrudgeWeb.PageHTML do
             </button>
         </div>
     </form>
-</div>' |>
-    Phoenix.HTML.raw()
-  end
-end
+</div>

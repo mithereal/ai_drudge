@@ -35,6 +35,12 @@ defmodule AiDrudgeWeb.Endpoint do
     plug Phoenix.Ecto.CheckRepoStatus, otp_app: :ai_drudge
   end
 
+  plug Plug.Static,
+       at: "/kaffy", # or "/path/to/your/static/kaffy"
+       from: :kaffy,
+       gzip: false,
+       only: ~w(assets)
+
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",
     cookie_key: "request_logger"

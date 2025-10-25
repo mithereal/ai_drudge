@@ -17,17 +17,16 @@ defmodule AiDrudge.Articles.Article do
 
   @doc false
   def changeset(article, attrs) do
-    article
+     article
     |> cast(attrs, [
       :host,
       :name,
       :title,
       :description,
-      :r_summary,
-      :d_summary,
-      :data_points,
+      :republican,
+      :democrat,
       :support
     ])
-    |> validate_required([:host, :name, :title, :description, :r_summary, :d_summary, :support])
+    |> validate_required([:host, :name, :title, :description, :republican, :democrat, :support])
   end
 end

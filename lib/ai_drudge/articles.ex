@@ -101,4 +101,8 @@ defmodule AiDrudge.Articles do
   def change_article(%Article{} = article, attrs \\ %{}) do
     Article.changeset(article, attrs)
   end
+
+  def total_articles() do
+    Repo.aggregate(from(f in "articles"), :count, :id)
+  end
 end

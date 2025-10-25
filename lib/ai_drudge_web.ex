@@ -16,12 +16,15 @@ defmodule AiDrudgeWeb do
   below. Instead, define additional modules and import
   those modules here.
   """
+  def favicons do
+    ~w(android-chrome-192x192.png android-chrome-512x512.png apple-touch-icon.png favicon.ico icon.svg site.webmanifest)
+  end
 
-  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt) ++ favicons()
 
   def router do
     quote do
-      use Phoenix.Router, helpers: false
+      use Phoenix.Router, helpers: true
 
       # Import common connection and controller functions to use in pipelines
       import Plug.Conn

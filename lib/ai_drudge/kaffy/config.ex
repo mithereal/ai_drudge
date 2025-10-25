@@ -9,6 +9,11 @@ defmodule AiDrudge.Kaffy.Config do
         resources: [
           feeds: [schema: AiDrudge.Feeds.Feed, admin: AiDrudge.Kaffy.Feed]
         ]
+      ],
+      Articles: [
+        resources: [
+          articles: [schema: AiDrudge.Articles.Article, admin: AiDrudge.Kaffy.Article]
+        ]
       ]
     ]
   end
