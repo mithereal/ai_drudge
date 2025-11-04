@@ -4,13 +4,14 @@ defmodule AiDrudgeWeb.PageController do
   def home(conn, _params) do
     articles = AiDrudge.Articles.list_articles()
 
-    render(conn, :home, articles: articles)
+    render(conn, :home, articles: articles, trending: [])
   end
 
   def search(conn, %{"query" => query}) do
     Task.start(fn ->
       AiDrudge.Agent.request(query)
     end)
+
     Phoenix.Controller.redirect(conn, to: "/admin")
-    end
+  end
 end

@@ -36,6 +36,7 @@ defmodule AiDrudge.Articles do
 
   """
   def get_article!(id), do: Repo.get!(Article, id)
+  def get_article(id), do: Repo.get(Article, id)
 
   @doc """
   Creates a article.

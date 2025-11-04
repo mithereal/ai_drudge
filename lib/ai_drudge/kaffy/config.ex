@@ -14,6 +14,9 @@ defmodule AiDrudge.Kaffy.Config do
         resources: [
           articles: [schema: AiDrudge.Articles.Article, admin: AiDrudge.Kaffy.Article]
         ]
+      ],
+      scheduled_tasks: [
+        AiDrudge.Kaffy.Tasks
       ]
     ]
   end

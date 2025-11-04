@@ -3,8 +3,6 @@ defmodule AiDrudge.Kaffy.Article do
   Configuration for Articles in Kaffy admin.
   """
 
-  import Phoenix.Component
-
   alias AiDrudge.Articles
 
   def widgets(_schema, _conn) do

@@ -35,27 +35,36 @@ defmodule AiDrudgeWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <header class="navbar px-4 sm:px-6 lg:px-8">
-      <div class="flex-1">
-        <a href="/" class="flex-1 flex w-fit items-center gap-2">
-          <img src={~p"/images/logo.svg"} width="36" />
-          <span class="text-sm font-semibold"></span>
-        </a>
-      </div>
-      <div class="flex-none">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <.theme_toggle />
-          </li>
-        </ul>
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-800 via-indigo-900 to-red-800 text-white shadow-md">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="font-techno">
+          <h1 class="text-3xl font-extrabold tracking-tight">AI-DRUDGE</h1>
+          <p class="text-sm text-white/80 dark:text-white/60">
+            AI-powered analysis of political news & commentary
+          </p>
+        </div>
       </div>
     </header>
-
-    <main class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl space-y-4">
+    <!-- Main Layout -->
+    <main class="h-full w-full max-w-7xl px-6">
+      &nbsp;
+      <div class="flex flex-cols gap-6 mx-auto  h-full">
         {render_slot(@inner_block)}
       </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="mt-8 border-t border-slate-800 bg-slate-900/60 backdrop-blur text-sm text-gray-400">
+      <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center">
+        <p>© <span id="year"></span> AI-DRUDGE</p>
+        <div class="flex gap-3">
+          <a href="#" class="hover:text-blue-300">Privacy</a>
+          <a href="#" class="hover:text-blue-300">Terms</a>
+          <a href="#" class="hover:text-blue-200">About</a>
+        </div>
+      </div>
+    </footer>
 
     <.flash_group flash={@flash} />
     """
@@ -142,6 +151,48 @@ defmodule AiDrudgeWeb.Layouts do
   end
 
   @doc """
+  Provides The Left Sidebar
+
+  ## Examples
+
+      <.left_sidebar trending={@trending} />
+  """
+  attr :trending, :list, default: [], doc: "List of Trending Topics"
+
+  def left_sidebar(assigns) do
+    ~H"""
+    <aside class="hidden lg:block bg-slate-800/40 backdrop-blur border border-slate-700 rounded-lg shadow-sm p-4">
+      <h2 class="text-lg font-semibold mb-3 text-white">Trending Topics</h2>
+
+      <ul :for={topic <- @trending} class="text-sm space-y-2 text-gray-300">
+        <li><a href="#" class="hover:text-blue-300">{topic}</a></li>
+      </ul>
+    </aside>
+    """
+  end
+
+  @doc """
+  Provides The Right Sidebar
+
+  ## Examples
+
+      <.right_sidebar />
+  """
+  def right_sidebar(assigns) do
+    ~H"""
+    <aside class="hidden lg:block bg-slate-800/40 dark:bg-slate-600/40 backdrop-blur border border-slate-700 rounded-lg shadow-sm  w-20">
+      <h2 class="text-lg font-semibold mb-3 text-white dark:text-black">AI Insights</h2>
+      <p class="text-sm text-gray-300 dark:text-grey-100 mb-3">
+        AI detects bias, sentiment, and framing across political spectrums.
+      </p>
+      <div class="GreatVibesRegular bg-gradient-to-r from-blue-700 to-red-700 text-white dark:text-grey-400 text-center rounded-md py-2 font-semibold">
+        Balanced by Design
+      </div>
+    </aside>
+    """
+  end
+
+  @doc """
   Shows the feed article and content.
 
   ## Examples
@@ -152,20 +203,25 @@ defmodule AiDrudgeWeb.Layouts do
 
   def article(assigns) do
     ~H"""
-    <div class="flex flex-row bg-slate-300">
-      <div>{@article.republican}</div>
-      <div class="grow items-center justify-center text-center  bg-slate-200">
-        <.link navigate={@article.host}>{@article.title}</.link>
-        <div>{@article.description}</div>
+    <div class="grid grid-cols-3 text-sm py-3 items-center text-center gap-2">
+      <!-- Conservative -->
+      <div class="mx-2 text-red-400 bg-gray-300">
+        {@article.republican}
       </div>
-      <div>{@article.democrat}</div>
-    </div>
-    <div class="flex flex-row justify-around bg-slate-200">
-      <div>
-        Data Points: {to_string(@article.data_points)}
+      
+    <!-- Center (headline + description) -->
+      <div class="px-2 flex flex-col items-center justify-center text-center bg-slate-200 dark:bg-slate-800 rounded-md py-2">
+        <.link navigate={@article.host} class="font-semibold text-blue-400 hover:underline">
+          {@article.title}
+        </.link>
+        <div class="text-gray-700 dark:text-gray-300 text-sm mt-1">
+          {@article.description}
+        </div>
       </div>
-      <div>
-        Support Leaning: {@article.support}
+      
+    <!-- Liberal -->
+      <div class="px-2 text-blue-400 bg-gray-300">
+        {@article.democrat}
       </div>
     </div>
     """

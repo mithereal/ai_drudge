@@ -33,7 +33,6 @@ defmodule AiDrudgeWeb.Router do
   end
 
   scope "/", AiDrudgeWeb do
-
     post "/search", PageController, :search
   end
 

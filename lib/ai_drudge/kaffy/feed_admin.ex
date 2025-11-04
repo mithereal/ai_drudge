@@ -3,8 +3,6 @@ defmodule AiDrudge.Kaffy.Feed do
   Configuration for Feeds in Kaffy admin.
   """
 
-  import Phoenix.Component
-
   alias AiDrudge.Feeds
 
   def widgets(_schema, _conn) do

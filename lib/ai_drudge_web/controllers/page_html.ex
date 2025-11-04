@@ -8,8 +8,8 @@ defmodule AiDrudgeWeb.PageHTML do
 
   embed_templates "page_html/*"
 
-  def ai_chat(_params)do
-   '<div class="w-screen flex items-center">
+  def ai_chat(_params) do
+    '<div class="w-screen flex items-center">
 <div class="pt-5 pb-5">Enter a Statement and chatgpt will analise it and give a breakdown for the frontpage.</div>
     <form action="/search" class="max-w-[480px] w-full px-8" method="post">
         <div class="relative">
@@ -26,7 +26,7 @@ defmodule AiDrudgeWeb.PageHTML do
             </button>
         </div>
     </form>
-</div>' |>
-    Phoenix.HTML.raw()
+</div>'
+    |> Phoenix.HTML.raw()
   end
 end

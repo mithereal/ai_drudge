@@ -5,6 +5,7 @@ defmodule AiDrudge.Repo.Migrations.CreateFeeds do
     create table(:feeds) do
       add :host, :string
       add :active, :boolean, default: false, null: false
+      add :scraped, :boolean, default: false, null: false
 
       timestamps(type: :utc_datetime)
     end

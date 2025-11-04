@@ -36,10 +36,11 @@ defmodule AiDrudgeWeb.Endpoint do
   end
 
   plug Plug.Static,
-       at: "/kaffy", # or "/path/to/your/static/kaffy"
-       from: :kaffy,
-       gzip: false,
-       only: ~w(assets)
+    # or "/path/to/your/static/kaffy"
+    at: "/kaffy",
+    from: :kaffy,
+    gzip: false,
+    only: ~w(assets)
 
   plug Phoenix.LiveDashboard.RequestLogger,
     param_key: "request_logger",

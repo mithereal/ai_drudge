@@ -5,6 +5,7 @@ defmodule AiDrudge.Feeds.Feed do
   schema "feeds" do
     field :host, :string
     field :active, :boolean
+    field :scraped, :boolean
 
     timestamps(type: :utc_datetime)
   end

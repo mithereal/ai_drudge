@@ -21,6 +21,10 @@ defmodule AiDrudge.Feeds do
     Repo.all(Feed)
   end
 
+  def list_unscraped_feeds do
+    Repo.all_by(Feed, scraped: false)
+  end
+
   @doc """
   Gets a single feed.
 
@@ -36,6 +40,7 @@ defmodule AiDrudge.Feeds do
 
   """
   def get_feed!(id), do: Repo.get!(Feed, id)
+  def get_feed(id), do: Repo.get(Feed, id)
 
   @doc """
   Creates a feed.
@@ -104,5 +109,16 @@ defmodule AiDrudge.Feeds do
 
   def total_feeds() do
     Repo.aggregate(from(f in "feeds"), :count, :id)
+  end
+
+  def cache_feeds() do
+    response =
+      list_unscraped_feeds()
+      |> fetch_feed_description()
+      |> AiDrudge.Agent.request()
+  end
+
+  def fetch_feed_description(_data) do
+    "tbd"
   end
 end

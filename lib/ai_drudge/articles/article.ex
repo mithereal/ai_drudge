@@ -17,7 +17,7 @@ defmodule AiDrudge.Articles.Article do
 
   @doc false
   def changeset(article, attrs) do
-     article
+    article
     |> cast(attrs, [
       :host,
       :name,

@@ -4,9 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="AiDrudge" suffix=" · Phoenix Framework">
+    <.live_title default="AiDrudge" suffix="">
       {assigns[:page_title]}
     </.live_title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="https://fontlibrary.org//face/rebecca"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
     </script>
@@ -30,19 +40,7 @@
       })();
     </script>
   </head>
-  <body>
-  <main>
-  <div id="parchment"></div>
-  <div id="contain">
-  {@inner_content}
-  </div>
-  </main>
-
-  <svg>
-    <filter id="wavy2">
-      <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1" />
-      <feDisplacementMap in="SourceGraphic" scale="20" />
-    </filter>
-  </svg>
+  <body class="min-h-screen stars bg-gradient-to-b from-red-950 via-slate-900 to-blue-950 text-gray-100 dark:from-red-950 dark:via-slate-900 dark:to-blue-950">
+    {@inner_content}
   </body>
 </html>
